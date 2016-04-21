@@ -30,7 +30,8 @@ pageTab组件
 注意：Container, Tab, TabItem, Content, ContentItem可以为任意标签，但请严格按照此上下文格式编写
 
 * JS代码使用方法：
-```JS
+```JSI
+//示例中假设N为5
 var test = pageTab({
 	containerID: "container", //container ID
 	tabNums: 5, // 5个tab
