@@ -6,6 +6,7 @@
  * @param {String} [options.clickType="click"] tab点击事件类型，默认为click事件
  * @param {Number} [options.showTab=1] 激活哪个tab展示，默认为激活第一个tab
  * @param {String} options.showClass 激活对应tab所依赖的class样式，必填参数
+ * @param {Array} [options.initFunc] 根据showTab来执行对应的tab初始化函数
  * @param {Array} [options.switchIn=[]] 该数组存放每个tab在进入的时候需要执行的函数句柄，默认为null
  * @param {Array} [options.switchOut=[]] 该数组存放每个tab在离开的时候需要执行的函数句柄，默认为null
  * @example
@@ -32,6 +33,11 @@
 			tabNums: 5, // 5个tab
 			showTab: 1, // 激活展示第一个tab及其内容
 			showClass: "active", //激活tab依赖的class
+			initFunc: [ //根据showTab来执行对应的初始化函数，这里将执行tab1的初始化函数
+				function() {console.log("初始化tab1")},
+				function() {console.log("初始化tab2")},
+				function() {console.log("初始化tab3")}
+			],
 			switchIn: [ //为方便完整示例，这里给每个tab都设置了函数句柄，实际使用中根据需要传递，默认不传为空
 						function() {console.log("进入tab1")},
 						function() {console.log("进入tab2")},
@@ -55,6 +61,7 @@ var pageTab = function(options) {
         clickType: "click",
         showTab: 1,
         showClass: "",
+        initFunc: [],
         switchIn: [],
         switchOut: []
     };
@@ -121,6 +128,8 @@ pageTab.prototype = {
         $.each($(me.contentItem).parent().children(), function(index, item) { //初始化展示内容区
             if (me.options.showTab === index + 1) {
                 $(item).show();
+		//执行初始化TAB的初始化函数
+		typeof me.options.initFunc[me.options.showTab - 1] === "function" && me.options.initFunc[me.options.showTab - 1]();
             } else {
                 $(item).hide();
             }
