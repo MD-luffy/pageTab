@@ -40,7 +40,9 @@ var test = pageTab({
 	initFunc: [ //根据showTab来执行对应的初始化函数，这里将执行tab1的初始化函数
 				function() {console.log("初始化tab1")},
 				function() {console.log("初始化tab2")},
-				function() {console.log("初始化tab3")}
+				function() {console.log("初始化tab3")},
+				function() {console.log("初始化tab4")},
+				function() {console.log("初始化tab5")}
 			],
 	switchIn: [ //为方便完整示例，这里给每个tab都设置了函数句柄，实际使用中根据需要传递，默认不传为空
 				function() {console.log("进入tab1")},
