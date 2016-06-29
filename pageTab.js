@@ -83,8 +83,8 @@ var pageTab = function(options) {
                 // 执行进入tab函数
                 typeof(swin = options.switchIn[newItem]) === "function" && swin();
                 // 更新tabItem和contentItem状态
-                tabItem = ele;
-                contentItem = $(contentItem.parentNode).children()[newItem];
+                this.tabItem = ele;
+                this.contentItem = $(contentItem.parentNode).children()[newItem];
             }
         }
     };
