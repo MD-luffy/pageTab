@@ -91,7 +91,8 @@ var pageTab = function(options) {
                 $(contentItem.parentNode).children().eq(newItem).show();
                 // 执行进入tab函数
                 typeof(swin = options.switchIn[newItem]) === "function" && swin();
-                // 更新tabItem和contentItem状态
+                // 更新tabIndex, tabItem，contentItem状态
+                this.tabIndex = newItem + 1;
                 this.tabItem = ele;
                 this.contentItem = $(contentItem.parentNode).children()[newItem];
             }
@@ -106,7 +107,8 @@ var pageTab = function(options) {
         if (!this.isFormatCorrect(this.options.containerID)) {
             throw new Error("Tab容器HTML格式不正确!");
         } else {
-            // 初始化tabItem, contentItem
+            // 初始化tabIndex, tabItem, contentItem
+            this.tabIndex = this.options.showTab;
             this.tabItem = $("#" + this.options.containerID).children().first().children()[this.options.showTab - 1];
             this.contentItem = $("#" + this.options.containerID).children().last().children()[this.options.showTab - 1];
             // 初始化处理程序
@@ -215,5 +217,12 @@ pageTab.prototype = {
      */
     _setSwitchOut: function(whichTab, func) {
         this.options.switchOut[whichTab - 1] = func;
+    },
+    /**
+     * 获取当前活动tab索引
+     * @return {int} 活动tab索引值
+     */
+    _getTabIndex: function() {
+	return this.tabIndex;
     }
 }
