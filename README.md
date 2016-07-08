@@ -65,5 +65,6 @@ var test = pageTab({
 //以上例test对象为例
 test._setSwitchIn(1, function() {console.log("我把tab1的进入执行函数变喽！")}); //设置进入某个tab item的函数句柄
 test._setSwitchOut(1, function() {console.log("我把tab1的离开执行函数变喽！")}); //设置离开某个tab item的函数句柄
+test._getTabIndex(); //获取当前活动tab索引
 test._destroy(); //关闭该容器函数响应机制
 ```
