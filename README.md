@@ -68,3 +68,5 @@ test._setSwitchOut(1, function() {console.log("我把tab1的离开执行函数�
 test._getTabIndex(); //获取当前活动tab索引
 test._destroy(); //关闭该容器函数响应机制
 ```
+===
+PS：注意initFunc使用方式，按照当前流程，该数组内指定的每个tab对应的初始化函数都将在每个tab第一次被点击的时候执行，所以各tab在第一次被点击的时候将不会执行其对应的switchIn函数
