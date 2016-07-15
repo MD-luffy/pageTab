@@ -89,8 +89,13 @@ var pageTab = function(options) {
                 $(ele).addClass(options.showClass);
                 $(contentItem).hide();
                 $(contentItem.parentNode).children().eq(newItem).show();
-                // 执行进入tab函数
-                typeof(swin = options.switchIn[newItem]) === "function" && swin();
+		// 执行进入tab函数
+		if (this.haveInit[newItem] === undefined) {
+		    typeof options.initFunc[newItem] === "function" && options.initFunc[newItem]();
+		    this.haveInit[newItem] = true;
+		} else {
+		    typeof (swin = options.switchIn[newItem]) === "function" && swin();
+		}
                 // 更新tabIndex, tabItem，contentItem状态
                 this.tabIndex = newItem + 1;
                 this.tabItem = ele;
@@ -111,6 +116,9 @@ var pageTab = function(options) {
             this.tabIndex = this.options.showTab;
             this.tabItem = $("#" + this.options.containerID).children().first().children()[this.options.showTab - 1];
             this.contentItem = $("#" + this.options.containerID).children().last().children()[this.options.showTab - 1];
+	    // 记录哪些tab已经被初始化
+	    this.haveInit = [];
+	    this.haveInit[this.tabIndex - 1] = true;
             // 初始化处理程序
             this.init();
         }
