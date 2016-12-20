@@ -15,7 +15,6 @@ pageTab组件
 //示例中假设N为5
 var _container =  new pageTab({
 	containerID: "container", //container ID
-	tabNums: 5, // 5个tab
 	showTab: 1, // 激活展示第一个tab及其内容
 	tabClass: "tab-item", //标签公用标志类
 	contentClass: "content-item", //内容公用标志类
