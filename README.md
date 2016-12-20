@@ -10,32 +10,15 @@ pageTab组件
 
 使用实例：
 ---
-* HTML代码格式:
-```HTML
-<Container id="container">
-	<Tab>
-		<TabItem>第一个tab</TabItem>
-		<TabItem>第二个tab</TabItem>
-		<TabItem>.........</TabItem>
-		<TabItem>第N个tab </TabItem>
-	</Tab>
-	<Content>
-		<ContentItem>tab1内容</ContentItem>
-		<ContentItem>tab2内容</ContentItem>
-		<ContentItem>........</ContentItem>
-		<ContentItem>tabN内容</ContentItem>
-	</Content>
-</Container>
-```
-注意：Container, Tab, TabItem, Content, ContentItem可以为任意标签，但请严格按照此上下文格式编写
-
-* JS代码使用方法：
+* 使用方法：
 ```JS
 //示例中假设N为5
 var test = pageTab({
 	containerID: "container", //container ID
 	tabNums: 5, // 5个tab
 	showTab: 1, // 激活展示第一个tab及其内容
+	tabClass: "tab-item", //标签公用标志类
+	contentClass: "content-item", //内容公用标志类
 	showClass: "active", //激活tab依赖的class
 	initFunc: [ //根据showTab来执行对应的初始化函数，这里将执行tab1的初始化函数
 				function() {console.log("初始化tab1")},
