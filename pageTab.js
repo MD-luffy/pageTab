@@ -2,7 +2,6 @@
  * 页面tab标签类，支持同页面多个容器的情况
  * @param  {Object} options 初始化传值对象
  * @param {String} options.containerID 页面容器ID，必填参数
- * @param {Number} options.tabNums 页面tab个数，必填参数
  * @param {String} [options.clickType="click"] tab点击事件类型，默认为click事件
  * @param {Number} [options.showTab=1] 激活哪个tab展示，默认为激活第一个tab
  * @param {String} options.tabClass tab item公用指示类，必填参数
@@ -15,7 +14,6 @@
 	使用案例：(假设N为5)
 		var test = pageTab({
 			containerID: "container", //container ID
-			tabNums: 5, // 5个tab
 			showTab: 1, // 激活展示第一个tab及其内容
 			tabClass: "tab-item", //标签公用标志类
 			contentClass: "content-item", //内容公用标志类
@@ -46,7 +44,6 @@
 var pageTab = function(options) {
 	this.options = {
 		containerID: "",
-		tabNums: null,
 		initFunc: [],
 		clickType: "click",
 		showTab: 1,
