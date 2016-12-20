@@ -13,7 +13,7 @@ pageTab组件
 * 使用方法：
 ```JS
 //示例中假设N为5
-var test = pageTab({
+var _container =  new pageTab({
 	containerID: "container", //container ID
 	tabNums: 5, // 5个tab
 	showTab: 1, // 激活展示第一个tab及其内容
