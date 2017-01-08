@@ -81,6 +81,8 @@ var pageTab = function(options) {
 			$(ele).addClass(options.showClass);
 			$(this.contentItem).hide();
 			contentElems.eq(newItem).show();
+			//执行switchin之前更新tabIndex
+			this.tabIndex = newItem + 1;
 			// 执行进入tab函数
 			if (this.haveInit[newItem] === undefined) {
 				typeof options.initFunc[newItem] === "function" && options.initFunc[newItem]();
@@ -88,8 +90,7 @@ var pageTab = function(options) {
 			} else {
 				typeof (swin = options.switchIn[newItem]) === "function" && swin();
 			}
-			// 更新tabIndex, tabItem，contentItem状态
-			this.tabIndex = newItem + 1;
+			// 更新tabItem，contentItem状态
 			this.tabItem = ele;
 			this.contentItem = contentElems[newItem];
 		}
